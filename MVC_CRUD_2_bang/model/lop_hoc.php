@@ -1,9 +1,17 @@
 <?php
-require 'connect.php';
+require 'model/connect.php';
 
 //Lấy danh sách lớp
-
-
+$connect=connect();
+function lop_hoc_select_all()
+{
+    //Chọn tất cả để khi create sinh_viên sẽ có select để chọn lớp
+     $connect = connect();
+    $sql = "SELECT * from lop_hoc";
+    $result = mysqli_query($connect, $sql);
+    return $result;
+    mysqli_close($connect);
+}
 switch ($action) {
     case '':
         $sql = "SELECT * from lop_hoc";
